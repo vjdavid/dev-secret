@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+  <<: *default
+  database: last_secret_development
+  username: generic
+  password: sample
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  #database: secret_test
+
+production:
+  <<: *default
+  database: secret_production
+  username: secret
+  password: <%= ENV['SECRET_DATABASE_PASSWORD'] %>
